@@ -14,7 +14,7 @@ export function Auth() {
       menuItem: "Entrar",
       render: () => (
         <Tab.Pane>
-        <RegisterForm/>
+        <h2>Login</h2>
         </Tab.Pane>
       ),
     },
@@ -22,7 +22,8 @@ export function Auth() {
       menuItem: "Nuevo usuario",
       render: () => (
         <Tab.Pane>
-          <h2>register form</h2>
+          
+          <RegisterForm/>
         </Tab.Pane>
       ),
     },
