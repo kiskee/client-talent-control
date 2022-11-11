@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Tab } from "semantic-ui-react";
-//import { RegisterForm } from "../../../components/Admin/Auth";
-import {RegisterForm } from '../../components/Admin/Auth'
+import {RegisterForm, LoginForm } from '../../components/Admin/Auth'
 
 
 export function Auth() {
@@ -14,7 +13,7 @@ export function Auth() {
       menuItem: "Entrar",
       render: () => (
         <Tab.Pane>
-        <h2>Login</h2>
+        <LoginForm/>
         </Tab.Pane>
       ),
     },
@@ -23,7 +22,7 @@ export function Auth() {
       render: () => (
         <Tab.Pane>
           
-          <RegisterForm/>
+          <RegisterForm openLogin={openLogin}/>
         </Tab.Pane>
       ),
     },

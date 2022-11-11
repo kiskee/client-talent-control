@@ -27,7 +27,7 @@ export function RegisterForm(props) {
   });
 
   return (
-    <Form  onSubmit={formik.handleSubmit}>
+    <Form className="register-form" onSubmit={formik.handleSubmit}>
       <Form.Input
         name="email"
         placeholder="Correo electronico"
@@ -65,7 +65,7 @@ export function RegisterForm(props) {
         Crear cuenta
       </Form.Button>
 
-      <p >{error}</p>
+      <p className="register-form__error">{error}</p>
     </Form>
   );
 }
