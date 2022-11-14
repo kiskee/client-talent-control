@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Tab } from "semantic-ui-react";
 import {RegisterForm, LoginForm } from '../../../components/Admin/Auth'
+import "./Auth.css";
 
 
 export function Auth() {
@@ -29,12 +30,12 @@ export function Auth() {
   ];
 
   return (
-    <div>
+    <div className="auth">
       
 
       <Tab
         panes={panes}
-        
+        className="auth__forms"
         activeIndex={activeIndex}
         onTabChange={(_, data) => setActiveIndex(data.activeIndex)}
       />
