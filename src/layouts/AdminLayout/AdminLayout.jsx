@@ -6,7 +6,7 @@ export function AdminLayout(props) {
 
   return (
     <div >
-        <h2>ADMIN LAYOUT</h2>
+        
         {children}
     </div>
   );

@@ -710,6 +710,8 @@ __metadata:
     "@types/react-dom": ^18.0.8
     "@vitejs/plugin-react": ^2.2.0
     formik: ^2.2.9
+    jwt-decode: ^3.1.2
+    lodash: ^4.17.21
     react: ^18.2.0
     react-dom: ^18.2.0
     react-router-dom: ^6.4.3
@@ -1393,6 +1395,13 @@ __metadata:
   bin:
     json5: lib/cli.js
   checksum: 74b8a23b102a6f2bf2d224797ae553a75488b5adbaee9c9b6e5ab8b510a2fc6e38f876d4c77dea672d4014a44b2399e15f2051ac2b37b87f74c0c7602003543b
+  languageName: node
+  linkType: hard
+
+"jwt-decode@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "jwt-decode@npm:3.1.2"
+  checksum: 20a4b072d44ce3479f42d0d2c8d3dabeb353081ba4982e40b83a779f2459a70be26441be6c160bfc8c3c6eadf9f6380a036fbb06ac5406b5674e35d8c4205eeb
   languageName: node
   linkType: hard
 

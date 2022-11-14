@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Auth, Dashboard } from "../pages/admin";
+import { Auth, Dash } from "../pages/admin";
 import { useAuth } from "../hooks";
 import { AdminLayout } from "../layouts";
 
@@ -18,7 +18,20 @@ export function AdminRouter() {
 
   return (
     <Routes>
-        <Route path='/admin/*' element={loadLayout(AdminLayout,Auth)}/>
+         {!user ? (
+        <Route path="/admin/*" element={<Auth />} />
+      ) : (
+        <>
+          {["/admin", "/admin/users"].map((path) => (
+            <Route
+              key={path}
+              path={path}
+              element={loadLayout(AdminLayout, Dash)}
+            />
+          ))}
+          
+        </>
+      )}
     </Routes>
   );
 }
