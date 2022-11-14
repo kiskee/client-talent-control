@@ -1,6 +1,6 @@
 import React from "react";
+import { Logout } from "../../components/Web/Logout";
 
-//import { TopBar, Footer } from "../../components/Web";
 
 
 export function ClientLayout(props) {
@@ -8,7 +8,7 @@ export function ClientLayout(props) {
 
   return (
     <div >
-      <h2>CLIENT LAYOUT</h2>
+      <Logout/>
       { children }
     </div>
   );
