@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Icon } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks";
@@ -12,25 +12,24 @@ export function Logout() {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const [user, setuser] = useState(second)
+  const [user, setUser] = useState("");
 
-  const userName = async () => {
-    try {
-      let accessToken = authController.getAccessToken()
+  useEffect(() => {
+    const userName = async () => {
+      try {
+        let accessToken = authController.getAccessToken();
 
-      console.log(accessToken);
+        const response = await userController.getMe(accessToken);
+        delete response.password;
 
-      const response = await userController.getMe(accessToken);
-      delete response.password;
+        setUser(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      setUser(response);
-      setToken(accessToken);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  userName()
+    userName()
+  }, []);
 
   const onLogout = () => {
     logout();
@@ -39,7 +38,7 @@ export function Logout() {
 
   return (
     <Button icon basic color="red" onClick={onLogout}>
-      <Icon name="power off" /> Logout
+      <Icon name="power off" /> {user.email}
     </Button>
   );
 }
