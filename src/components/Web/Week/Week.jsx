@@ -28,10 +28,6 @@ const FirstMondayoftheWeek = (dateEnter) => {
 const calculateDays = (dateEnter) => {
   let date = FirstMondayoftheWeek(dateEnter);
 
-  // console.log(' ⟢ ⊱⊱ ⟢ ')
-  // date = date.getTime() + 86400000
-  // console.log(new Date(date))
-
   let days = [];
 
   for (let i = 1; i < 6; i++) {
@@ -67,12 +63,23 @@ if (cookiesDaysoftheWeek.length == 0) {
     });
 }
 
-
+const floorSelected = (event) =>{
+  console.log(event.target.value)
+}
 
 export function Week  () {
   return (
-    <div  
-    >
+    <div>
+      
+      <center>
+        <div className="filterFLoor">
+          <select onChange={()=>floorSelected(event)}>
+            <option value="10th floor">10th floor</option>
+            <option value="9th floor">9th floor</option>
+          </select>
+        </div>
+      </center>
+
       <div  >
         {day.map((element, index) => (
           <div key={element}>

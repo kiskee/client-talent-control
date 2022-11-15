@@ -29,35 +29,35 @@ export function LoginForm() {
   });
 
 
-/*
-<Form onSubmit={formik.handleSubmit}>
-      <Form.Input
-        name="email"
-        placeholder="Correo electronico"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        error={formik.errors.email}
-      />
-      <Form.Input
-        name="password"
-        type="password"
-        placeholder="Contraseña"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-        error={formik.errors.password}
-      />
-
-      <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
-        Entrar
-      </Form.Button>
-    </Form>
-*/
+  /*
+  <Form onSubmit={formik.handleSubmit}>
+        <Form.Input
+          name="email"
+          placeholder="Correo electronico"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          error={formik.errors.email}
+        />
+        <Form.Input
+          name="password"
+          type="password"
+          placeholder="Contraseña"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          error={formik.errors.password}
+        />
+  
+        <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
+          Entrar
+        </Form.Button>
+      </Form>
+  */
 
   return (
     <>
       <div className="mainMenuHolder">
         <svg className="mainMenuLogo"
-          
+
           viewBox="0 0 107 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -110,24 +110,24 @@ export function LoginForm() {
       </div>
       <div className="mainWrap"
       >
-        
+
         <div className="sasTitle">SAS Login</div>
 
         <div className="sasInputHolder" >
           <div className="sasInputLabel">Email</div>
           <div className="sasInputText">
             <img
-             className="sasInputIcon"
+              className="sasInputIcon"
               src="https://cdn-dynamic.talent.com/ajax/img/get-svg.php?icon=mail_icon&size=24&color=661D72"
             />
             <input
               className="sasInput"
               name="email"
-       
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        error={formik.errors.email}
-             
+
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              error={formik.errors.email}
+
             ></input>
           </div>
         </div>
@@ -139,48 +139,48 @@ export function LoginForm() {
               src="https://cdn-dynamic.talent.com/ajax/img/get-svg.php?icon=lock&size=24&color=661D72"
             />
             <input
-             className="sasInput"
-             name="password"
-             type="password"
-            
-             onChange={formik.handleChange}
-             value={formik.values.password}
-             error={formik.errors.password}
-              
+              className="sasInput"
+              name="password"
+              type="password"
+
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              error={formik.errors.password}
+
             ></input>
           </div>
         </div>
 
-        <button type="submit"  className="sasMainAction" onClick={formik.handleSubmit}>
+        <button type="submit" className="sasMainAction" onClick={formik.handleSubmit}>
           Login
         </button>
-        
+
         <div className="sas-help">
-        You can create a SAS account if you don't have one already. You can reset your password if your account is locked. 
-            <div className="linkis">
-                <a className="sasLink">Login</a> · 
-                <a className="sasLink" >Logout</a> · 
-                <a  className="sasLink">Reset password</a> ·
-                <a  className="sasLink">Resend Activation Link</a>
-            </div>  
+          You can create a SAS account if you don't have one already. You can reset your password if your account is locked.
+          <div className="linkis">
+            <a className="sasLink">Login</a> ·
+            <a className="sasLink" >Logout</a> ·
+            <a className="sasLink">Reset password</a> ·
+            <a className="sasLink">Resend Activation Link</a>
+          </div>
         </div>
       </div>
-      
+
       <footer>
-            <div className="footerInfo">
-                <a className="mainFooter" rel="nofollow" href="/get-started">Help</a>
-                <div >·</div>
-                <a className="mainFooter" rel="nofollow" href="/tos#privacy">Privacy Policy </a>
-                <div >·</div>
-                <a className="mainFooter" rel="nofollow" href="/tos">Terms of Service </a>
-                <div >·</div>
-                <div >© Talent.com</div>
-            </div>
-        </footer>
+        <div className="footerInfo">
+          <a className="mainFooter" rel="nofollow" href="/get-started">Help</a>
+          <div >·</div>
+          <a className="mainFooter" rel="nofollow" href="/tos#privacy">Privacy Policy </a>
+          <div >·</div>
+          <a className="mainFooter" rel="nofollow" href="/tos">Terms of Service </a>
+          <div >·</div>
+          <div >© Talent.com</div>
+        </div>
+      </footer>
     </>
 
 
 
-    
+
   );
 }

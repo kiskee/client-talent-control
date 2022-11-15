@@ -39,8 +39,20 @@
 }
 .oval {
     background: #30183F;
+    color: white;
+}
+
+.oval.left{
+    float: left;
     -moz-border-radius: 100px 100px 0 0;
     -webkit-border-radius: 100px 100px 0 0;
-    border-radius: 100px 100px 0 0;
-    color: white;
+    border-radius: 0 100px 100px 0;
+    width: 50%;
+}
+.oval.right{
+    float: right;
+    -moz-border-radius: 100px 100px 0 0;
+    -webkit-border-radius: 100px 100px 0 0;
+    border-radius: 100px 0 0 100px;
+    width: 50%;
 }
