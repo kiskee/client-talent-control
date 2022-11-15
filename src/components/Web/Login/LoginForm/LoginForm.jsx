@@ -151,7 +151,7 @@ export function LoginForm() {
           </div>
         </div>
 
-        <button type="submit" primary fluid loading={formik.isSubmitting} className="sasMainAction" onClick={formik.handleSubmit}>
+        <button type="submit"  className="sasMainAction" onClick={formik.handleSubmit}>
           Login
         </button>
         

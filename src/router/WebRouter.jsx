@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import { Home, Login } from '../pages/web'
+import { WeekDays, Login } from '../pages/web'
 import { ClientLayout } from "../layouts";
 import { useAuth } from "../hooks";
 
@@ -18,14 +18,14 @@ export function WebRouter  (){
   return (
     <Routes>
          {!user ? (
-        <Route path="/" element={<Login />} />
+        <Route path="/*" element={<Login />} />
       ) : (
         <>
           {["/", "/home"].map((path) => (
             <Route
               key={path}
               path={path}
-              element={loadLayout(ClientLayout, Home)}
+              element={loadLayout(ClientLayout, WeekDays)}
             />
           ))}
           
