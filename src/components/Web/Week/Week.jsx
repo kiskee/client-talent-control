@@ -1,12 +1,12 @@
 /* --------------------------------- IMPORTS -------------------------------- */
-import React from "react";
+import React, { useState } from 'react';
 import { Day } from "./../Day";
 import { Cookie } from "../../../api";
 import {
   calculateDays,
-  FirstMondayoftheWeek,
   itisFriday,
 } from "./WeekForm.form";
+
 
 /* ----------------------------- CLASS INSTANCES ---------------------------- */
 const validationCookies = new Cookie();
@@ -19,29 +19,39 @@ let cookiesDaysoftheWeek = document.cookie
   .split(";")
   .filter((x) => x.search("Days of the week") > -1);
 
-
-
 if (cookiesDaysoftheWeek.length == 0) {
   // The users no has cookies
 
-  let { cookie, date } = await validationCookies.getCookieApi();
+  //let { cookie, date } = //await validationCookies.getCookieApi();
 
   if (itisFriday()) {
     // The current Date it's Friday; as it is Friday we update the API
+    let days
+    if (new Date(dateAPi) < new Date()) {
+      var dateCalculated = new Date();
 
+      dateCalculated.setDate(dateCalculated.getDate() + 7);
+      dateCalculated.setHours(12, 30, 0);
 
+      days = calculateDays(dateCalculated);
 
+      validationCookies.updateCookieApi({
+        date: dateCalculated,
+        cookie: days.join(","),
+      });
+    }
 
-
-
-
-
-    setTimeout(tarea, momento.getTime() - (new Date()).getTime());
-
-
+    document.cookie = "Days of the week" + "=" + days + "; expires=" + dateCalculated + "; path=/";
   } else {
     // The current date is not Friday; we create temporary cookies in the API
-    document.cookie = "Days of the week" + "=" + cookie + "; expires=" + date + "; path=/";
+   
+
+
+   validationCookies.getCookieApi()
+   .then((response)=>{
+    document.cookie =
+      "Days of the week" + "=" + response.cookie + "; expires=" + response.date + "; path=/";
+   })
   }
 } else {
   cookiesDaysoftheWeek[0]
@@ -52,21 +62,6 @@ if (cookiesDaysoftheWeek.length == 0) {
       day.push(new Date(temp).toLocaleDateString());
     });
 }
-
-
-
-
-
-var date = new Date();
-
-date.setDate(date.getDate() + 7);
-date.setHours(12, 30, 0);
-
-let days = calculateDays(date);
-
-validationCookies.updateCookieApi({ date: date, cookie: days.join(',') })
-
-
 
 
 // if (cookiesDaysoftheWeek.length == 0) {
