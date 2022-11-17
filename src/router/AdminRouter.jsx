@@ -14,11 +14,11 @@ export function AdminRouter() {
       </Layout>
     );
   };
-  
+
 
   return (
     <Routes>
-         {!user ? (
+      {!user ? (
         <Route path="/admin/*" element={<Auth />} />
       ) : (
         <>
@@ -29,7 +29,7 @@ export function AdminRouter() {
               element={loadLayout(AdminLayout, Dash)}
             />
           ))}
-          
+
         </>
       )}
     </Routes>
