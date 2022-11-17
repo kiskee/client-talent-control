@@ -44,16 +44,30 @@ if (cookiesDaysoftheWeek.length == 0) {
     document.cookie = "Days of the week" + "=" + days + "; expires=" + dateCalculated + "; path=/";
   } else {
     // The current date is not Friday; we create temporary cookies in the API
-   
 
 
-   validationCookies.getCookieApi()
-   .then((response)=>{
-    document.cookie =
-      "Days of the week" + "=" + response.cookie + "; expires=" + response.date + "; path=/";
-   })
+
+    validationCookies.getCookieApi()
+      .then((response) => {
+        document.cookie =
+          "Days of the week" + "=" + response.cookie + "; expires=" + response.date + "; path=/";
+      })
   }
-} else {
+} 
+// else {
+//   cookiesDaysoftheWeek[0]
+//     .split("=")
+//     .pop()
+//     .split(",")
+//     .forEach((temp) => {
+//       day.push(new Date(temp).toLocaleDateString());
+//     });
+// }
+
+const dayys = () =>{
+  let cookiesDaysoftheWeek = document.cookie
+  .split(";")
+  .filter((x) => x.search("Days of the week") > -1);
   cookiesDaysoftheWeek[0]
     .split("=")
     .pop()
@@ -62,6 +76,9 @@ if (cookiesDaysoftheWeek.length == 0) {
       day.push(new Date(temp).toLocaleDateString());
     });
 }
+
+setTimeout(dayys, "1500")
+
 
 
 // if (cookiesDaysoftheWeek.length == 0) {
