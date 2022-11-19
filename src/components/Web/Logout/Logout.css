@@ -1,0 +1,124 @@
+.hyper-top-bar {
+  width: 100%;
+  background: white;
+  line-height: normal;
+  align-items: center;
+  padding: 0px 48px;
+  flex-wrap: wrap;
+}
+
+.hyper-top-bar__options {
+  margin: auto 0;
+  min-width: fit-content;
+  white-space: nowrap;
+  align-items: center;
+  height: 100%;
+  float: right;
+}
+
+.menu__dropdownWrap {
+  position: relative;
+}
+
+.menu__item a {
+  text-decoration: none;
+  color: #676767;
+  cursor: pointer;
+  font-size: 14px;
+  padding-top: 2px;
+}
+
+.menu__dropdownTitle {
+  border: 1px solid #e1dce2;
+  border-radius: 80px;
+  padding: 2px 24px;
+  color: #676767;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu__dropdownHolder {
+  z-index: 12;
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 15%;
+  padding-top: 9px;
+}
+
+.menu__dropdown {
+  display: none;
+  white-space: nowrap;
+  z-index: 3;
+  background: white;
+  overflow: hidden;
+  padding: 11px 0;
+  box-shadow: 0 12px 28px rgb(48 55 61 / 10%);
+  border-radius: 8px;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.menu__listElement:last-of-type {
+  margin-bottom: 0;
+}
+
+.menu__listElement {
+  font-weight: 200;
+  max-width: inherit;
+  color: #545454;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+}
+
+.menu__listElement a {
+  padding: 12px 24px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 200;
+  max-width: inherit;
+  color: #545454;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+}
+
+.menu__listElement a:hover {
+  text-decoration: none;
+  background: #f6f7fa;
+  color: #602770;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.top-bar .top-bar-user:hover,
+.top-bar-settings:hover {
+  background-color: #c8c8c8;
+  cursor: pointer;
+}
+
+.menu__dropdownWrap:hover {
+  text-shadow: none;
+}
+
+.menu__item:hover {
+  color: #691f74;
+}
+
+.hyper-top-menu__dropdownWrap:hover .menu__dropdown,
+.menu__dropdownWrap:hover .menu__dropdown {
+  display: block;
+}
+
+.mainMenuLogo {
+  float: left;
+}
+
