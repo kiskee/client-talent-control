@@ -1,12 +1,8 @@
 /* --------------------------------- IMPORTS -------------------------------- */
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Day } from "./../Day";
 import { Cookie } from "../../../api";
-import {
-  calculateDays,
-  itisFriday,
-} from "./WeekForm.form";
-
+import { calculateDays, itisFriday } from "./WeekForm.form";
 
 /* ----------------------------- CLASS INSTANCES ---------------------------- */
 const validationCookies = new Cookie();
@@ -25,35 +21,42 @@ if (cookiesDaysoftheWeek.length == 0) {
   if (itisFriday()) {
     // The current Date it's Friday; as it is Friday we update the API
 
+    validationCookies.getCookieApi().then((response) => {
+      let days;
+      if (new Date(response.date) < new Date()) {
+        var dateCalculated = new Date();
 
-    validationCookies.getCookieApi()
-      .then((response) => {
-        let days
-        if (new Date(response.date) < new Date()) {
-          var dateCalculated = new Date();
+        dateCalculated.setDate(dateCalculated.getDate() + 7);
+        dateCalculated.setHours(12, 30, 0);
 
-          dateCalculated.setDate(dateCalculated.getDate() + 7);
-          dateCalculated.setHours(12, 30, 0);
+        days = calculateDays(dateCalculated);
 
-          days = calculateDays(dateCalculated);
+        validationCookies.updateCookieApi({
+          date: dateCalculated,
+          cookie: days.join(","),
+        });
+      }
 
-          validationCookies.updateCookieApi({
-            date: dateCalculated,
-            cookie: days.join(","),
-          });
-        }
-
-        document.cookie = "Days of the week" + "=" + days + "; expires=" + dateCalculated.toGMTString() + "; path=/";
-      })
-
+      document.cookie =
+        "Days of the week" +
+        "=" +
+        days +
+        "; expires=" +
+        dateCalculated.toGMTString() +
+        "; path=/";
+    });
   } else {
     // The current date is not Friday; we create temporary cookies in the API
-    validationCookies.getCookieApi()
-      .then((response) => {
-        console.log(response.date)
-        document.cookie =
-          "Days of the week" + "=" + response.cookie + "; expires=" + new Date(response.date).toGMTString() + "; path=/";
-      })
+    validationCookies.getCookieApi().then((response) => {
+      console.log(response.date);
+      document.cookie =
+        "Days of the week" +
+        "=" +
+        response.cookie +
+        "; expires=" +
+        new Date(response.date).toGMTString() +
+        "; path=/";
+    });
   }
 }
 
@@ -68,19 +71,20 @@ const dayys = () => {
     .forEach((temp) => {
       day.push(new Date(temp).toLocaleDateString());
     });
-}
+};
 
-setTimeout(dayys, "1500")
+setTimeout(dayys, "1500");
 
 const floorSelected = (event) => {
   console.log(event.target.value);
 };
 
 export function Week() {
+  console.log(day);
   return (
-    <div>
+    <div className="weeks">
       <center>
-        <div className="filterFLoor">
+        <div className="select-dropdown">
           <select onChange={() => floorSelected(event)}>
             <option value="10th floor">10th floor</option>
             <option value="9th floor">9th floor</option>
