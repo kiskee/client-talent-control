@@ -52,6 +52,7 @@ if (!localStorage.getItem(ENV.JWT.DAYS)) {
       );
     }
   });
+  setTimeout(loadday, "1500");
 } else {//Local storage
 
   let exp = JSON.parse(localStorage.getItem(ENV.JWT.DAYS)).expired
@@ -69,16 +70,17 @@ if (!localStorage.getItem(ENV.JWT.DAYS)) {
       cookie: days.join(","),
     });
   }
+  loadday()
 }
 
-function dayys() {
+function loadday() {
   JSON.parse(localStorage.getItem(ENV.JWT.DAYS))
     .days.split(",")
     .forEach((temp) => {
       day.push(new Date(temp).toLocaleDateString());
     });
 }
-setTimeout(dayys, "1500");
+// 
 
 const floorSelected = (event) => {
   console.log(event.target.value);

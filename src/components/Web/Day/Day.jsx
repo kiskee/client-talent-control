@@ -5,6 +5,7 @@ export function Day({ day, number }) {
 
   return (
     <>
+    <center>
       <div className="card">
         <center>
           <h4>
@@ -24,6 +25,7 @@ export function Day({ day, number }) {
           </div>
         </div>
       </div>
+      </center>
     </>
   );
 }
