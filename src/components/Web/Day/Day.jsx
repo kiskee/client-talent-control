@@ -14,16 +14,12 @@ export function Day({ day, number }) {
         <img src={Img} className="img" />
         <div className="container">
           <div>
-            <div className="oval left">
-              Morning
-              <br />
-              0/54
+            <div className="oval">
+              <center>Morning 0/54</center>
             </div>
-
-            <div className="oval right">
-              Morning
-              <br />
-              0/54
+            <br />
+            <div className="oval">
+              <center>Afternoon 0/54</center>
             </div>
           </div>
         </div>

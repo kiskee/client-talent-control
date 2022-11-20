@@ -1,3 +1,27 @@
+:root {
+    --nero: #222222;
+    --cyber-grape-20: #ddd6e3;
+    --deep-purple: #602770;
+    --grey: #676767;
+    --grey-light: #f6f6f9;
+    --grey-light-30: #fcfcfd;
+    --grey-light-50: #fafafc;
+    --grey-dark: #e2e2e2;
+    --violet: #9081AC;
+    --violate-light: #E1DCE2;
+    --purple: #691f74;
+    --purple-dark: #30183f;
+    --purple-light: rgba(105, 31, 116, 0.3);
+    --orange: #E34B31;
+    --orange-dark: #D6432A;
+    --orange-light: #E34B31;
+    --organge-talent: #FE3B1F;
+    --oragnge-salmon: #FAD4C5;
+    --blue: #0DA0BA;
+    --yellow: #DB9714;
+    --green: #60D3BF;
+}
+
 *{
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -25,8 +49,14 @@
    transform: scale(1.3);
    box-shadow: rgba(55, 3, 47, 0.6) 4px 4px 10px 4px;
    cursor: pointer;
-   background-color: #30183F;
+   background-color: var(--deep-purple);
    color: white;
+}
+
+.card:hover .oval{
+    background-color: var(--orange-light);
+    -moz-border-radius: 100px 100px 0 0;
+    border-radius: 100px 100px 100px 100px;
 }
 
 /* Add some padding inside the card container */
@@ -37,10 +67,9 @@
 .img{
     width: 100%;
 }
-.oval {
-    background: #30183F;
+/* .oval {
     color: white;
-}
+} */
 
 .oval.left{
     float: left;

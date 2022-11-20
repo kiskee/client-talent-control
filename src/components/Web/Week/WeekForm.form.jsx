@@ -48,3 +48,9 @@ export function itisFriday() {
     let tmpDate = new Date().getUTCDay();
     return tmpDate == 5 ? true : false
 }
+
+
+
+export function mostrar(){
+    console.log('click en un contenedor')
+}

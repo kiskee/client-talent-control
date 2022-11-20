@@ -8,6 +8,7 @@ export const ENV = {
     REGISTER: "auth/register",
     LOGIN: "auth/login",
     COOKIES : "cookie",
+    DAY: "day",
     REFRESH_ACCESS_TOKEN: "auth/refresh_access_token",
     USER_ME: "user/me",
     USER: "user",
@@ -16,5 +17,6 @@ export const ENV = {
   JWT: {
     ACCESS: "access",
     REFRESH: "refresh",
+    DAYS:"CalculatedDays"
   },
 };

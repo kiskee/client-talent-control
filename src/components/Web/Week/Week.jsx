@@ -1,78 +1,83 @@
 /* --------------------------------- IMPORTS -------------------------------- */
 import React, { useState } from "react";
 import { Day } from "./../Day";
-import { Cookie } from "../../../api";
-import { calculateDays, itisFriday } from "./WeekForm.form";
+import { Cookie ,ListDate} from "../../../api";
+import { calculateDays, mostrar } from "./WeekForm.form";
+import { ENV } from "../../../utils";
 
 /* ----------------------------- CLASS INSTANCES ---------------------------- */
 const validationCookies = new Cookie();
-
+const apidays = new ListDate();
 /* -------------------------------- VARIBLES -------------------------------- */
+
+
+console.log(apidays.getListuserForDate())
+
+
+
+
+
+
+
 let day = [];
 
-/* ---------------------------- We filter cookies --------------------------- */
-let cookiesDaysoftheWeek = document.cookie
-  .split(";")
-  .filter((x) => x.search("Days of the week") > -1);
+if (!localStorage.getItem(ENV.JWT.DAYS)) {
+  // You do not have the localStorage
+  validationCookies.getCookieApi().then((response) => {
+    let days;
 
-if (cookiesDaysoftheWeek.length == 0) {
-  // The users no has cookies
+    console.log(response);
 
-  if (itisFriday()) {
-    // The current Date it's Friday; as it is Friday we update the API
+    if (
+      new Date().toLocaleDateString() >
+      new Date(response.date).toLocaleDateString()
+    ) {
+      //We must update the API information
 
-    validationCookies.getCookieApi().then((response) => {
-      let days;
-      if (new Date(response.date) < new Date()) {
-        var dateCalculated = new Date();
+      var dateCalculated = new Date();
 
-        dateCalculated.setDate(dateCalculated.getDate() + 7);
-        dateCalculated.setHours(12, 30, 0);
+      dateCalculated.setDate(dateCalculated.getDate() + 7);
+      dateCalculated.setHours(12, 30, 0);
 
-        days = calculateDays(dateCalculated);
+      days = calculateDays(dateCalculated);
 
-        validationCookies.updateCookieApi({
-          date: dateCalculated,
-          cookie: days.join(","),
-        });
-      }
+      validationCookies.updateCookieApi({
+        date: dateCalculated,
+        cookie: days.join(","),
+      });
+    } else {
+      localStorage.setItem(
+        ENV.JWT.DAYS,
+        '{"expired":"' + response.date + '", "days":"' + response.cookie + '"}'
+      );
+    }
+  });
+} else {//Local storage
 
-      document.cookie =
-        "Days of the week" +
-        "=" +
-        days +
-        "; expires=" +
-        dateCalculated.toGMTString() +
-        "; path=/";
-    });
-  } else {
-    // The current date is not Friday; we create temporary cookies in the API
-    validationCookies.getCookieApi().then((response) => {
-      console.log(response.date);
-      document.cookie =
-        "Days of the week" +
-        "=" +
-        response.cookie +
-        "; expires=" +
-        new Date(response.date).toGMTString() +
-        "; path=/";
+  let exp = JSON.parse(localStorage.getItem(ENV.JWT.DAYS)).expired
+  let days;
+  if (new Date(exp).toGMTString() < new Date()) {// The current faith is higher than the date
+    var dateCalculated = new Date();
+
+    dateCalculated.setDate(dateCalculated.getDate() + 7);
+    dateCalculated.setHours(12, 30, 0);
+
+    days = calculateDays(dateCalculated);
+
+    validationCookies.updateCookieApi({
+      date: dateCalculated,
+      cookie: days.join(","),
     });
   }
 }
 
-const dayys = () => {
-  let cookiesDaysoftheWeek = document.cookie
-    .split(";")
-    .filter((x) => x.search("Days of the week") > -1);
-  cookiesDaysoftheWeek[0]
-    .split("=")
-    .pop()
-    .split(",")
+function dayys() {
+  JSON.parse(localStorage.getItem(ENV.JWT.DAYS))
+    .days.split(",")
     .forEach((temp) => {
       day.push(new Date(temp).toLocaleDateString());
     });
-};
-
+}
 setTimeout(dayys, "1500");
 
 const floorSelected = (event) => {
@@ -92,7 +97,7 @@ export function Week() {
         </div>
       </center>
 
-      <div>
+      <div className="container days" onClick={() => mostrar()}>
         {day.map((element, index) => (
           <div key={element}>
             <Day day={element} number={index} />
