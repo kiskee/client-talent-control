@@ -1,7 +1,7 @@
 /* --------------------------------- IMPORTS -------------------------------- */
 import React, { useState } from "react";
 import { Day } from "./../Day";
-import { Cookie ,ListDate} from "../../../api";
+import { Cookie, ListDate } from "../../../api";
 import { calculateDays, mostrar } from "./WeekForm.form";
 import { ENV } from "../../../utils";
 
@@ -98,14 +98,13 @@ export function Week() {
           </select>
         </div>
       </center>
-
-      <div className="container days" onClick={() => mostrar()}>
-        {day.map((element, index) => (
-          <div key={element}>
-            <Day day={element} number={index} />
-          </div>
-        ))}
-      </div>
+        <div className="container days" onClick={() => mostrar()}>
+          {day.map((element, index) => (
+            <div key={element}>
+              <Day day={element} number={index} />
+            </div>
+          ))}
+        </div>
     </div>
   );
 }

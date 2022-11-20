@@ -22,6 +22,9 @@
     --green: #60D3BF;
 }
 
+body{
+    background-color: var(--grey-dark);
+}
 * {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -55,6 +58,11 @@
     color: white;
 }
 
+.container.days{
+    background-color: var(--grey-light-30);
+    float: left;
+    align-items: center;
+}
 .card:hover .oval {
     background-color: var(--orange-light);
     -moz-border-radius: 100px 100px 0 0;
