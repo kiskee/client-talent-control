@@ -12,6 +12,7 @@ export function Day({ day, number }) {
           <h5 className="dateText">
             <b>{day}</b>
           </h5>
+          <div className="lineBreak"></div>
         </center>
         <img src={Img} className="img" />
         <div className="container">
