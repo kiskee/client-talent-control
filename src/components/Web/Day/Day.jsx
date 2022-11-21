@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { ListDate } from "../../../api";
 
-export function Day({ day, number }) {
+
+export function Day({ day, number ,floor}) {
   let Img = `../../../../Day_${number + 1}.png`;
+
+  const apidays = new ListDate();
+
+  const [listFulltime, setListFulltime] = useState([])
+const [listmornign, setListmornign] = useState([])
+const [lsitafternoon, setLsitafternoon] = useState([])
+
+apidays.getListuserForDate(day,"10",'Fulltime',"work")
+
+//console.log(data)
+
+//setListFulltime(apidays.getListuserForDate(day,"10",'Fulltime',"work"))
+// setListFulltime(apidays.setListmornign(day,floor,'Part-Time morning',"work"))
+// setListFulltime(apidays.setLsitafternoon(day,floor,'Part-Time afternoon',"work"))
+
+
+// console.log(listFulltime)
+
+// console.log(listmornign)
+
+
+// console.log(listmornign)
+
+
 
   return (
     <>

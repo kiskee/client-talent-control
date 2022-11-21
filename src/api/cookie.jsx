@@ -27,6 +27,8 @@ export class Cookie {
 
     }
 
+
+
     async updateCookieApi(information) {
 
         console.log(information)
@@ -43,11 +45,10 @@ export class Cookie {
             const result = await response.json();
 
             if (response.status !== 200) throw result;
-
-            console.log('HOLI')
             console.log(result)
         } catch (error) {
             throw error
         }
     }
+
 }

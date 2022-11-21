@@ -9,17 +9,8 @@ import { ENV } from "../../../utils";
 const validationCookies = new Cookie();
 const apidays = new ListDate();
 /* -------------------------------- VARIBLES -------------------------------- */
-
-
-console.log(apidays.getListuserForDate())
-
-
-
-
-
-
-
 let day = [];
+/* ------------------------------- validations ------------------------------ */
 
 if (!localStorage.getItem(ENV.JWT.DAYS)) {
   // You do not have the localStorage
@@ -41,6 +32,10 @@ if (!localStorage.getItem(ENV.JWT.DAYS)) {
 
       days = calculateDays(dateCalculated);
 
+      days.forEach((temp) => {
+        apidays.createDay(temp);
+      });
+
       validationCookies.updateCookieApi({
         date: dateCalculated,
         cookie: days.join(","),
@@ -53,11 +48,13 @@ if (!localStorage.getItem(ENV.JWT.DAYS)) {
     }
   });
   setTimeout(loadday, "1500");
-} else {//Local storage
+} else {
+  //Local storage
 
-  let exp = JSON.parse(localStorage.getItem(ENV.JWT.DAYS)).expired
+  let exp = JSON.parse(localStorage.getItem(ENV.JWT.DAYS)).expired;
   let days;
-  if (new Date(exp).toGMTString() < new Date()) {// The current faith is higher than the date
+  if (new Date(exp).toGMTString() < new Date()) {
+    // The current faith is higher than the date
     var dateCalculated = new Date();
 
     dateCalculated.setDate(dateCalculated.getDate() + 7);
@@ -65,12 +62,16 @@ if (!localStorage.getItem(ENV.JWT.DAYS)) {
 
     days = calculateDays(dateCalculated);
 
+    days.forEach((temp) => {
+      apidays.createDay(temp);
+    });
+
     validationCookies.updateCookieApi({
       date: dateCalculated,
       cookie: days.join(","),
     });
   }
-  loadday()
+  loadday();
 }
 
 function loadday() {
@@ -80,14 +81,15 @@ function loadday() {
       day.push(new Date(temp).toLocaleDateString());
     });
 }
-// 
-
-const floorSelected = (event) => {
-  console.log(event.target.value);
-};
+//
 
 export function Week() {
-  console.log(day);
+  const [floor, setfloor] = useState("10");
+
+  const floorSelected = (event) => {
+    setfloor(event.target.value);
+  };
+
   return (
     <div className="weeks">
       <center>
@@ -98,13 +100,13 @@ export function Week() {
           </select>
         </div>
       </center>
-        <div className="container days" onClick={() => mostrar()}>
-          {day.map((element, index) => (
-            <div key={element}>
-              <Day day={element} number={index} />
-            </div>
-          ))}
-        </div>
+      <div className="container days" onClick={() => mostrar()}>
+        {day.map((element, index) => (
+          <div key={element}>
+            <Day day={element} number={index} floor={floor} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
