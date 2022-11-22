@@ -175,6 +175,16 @@ box-shadow: 2px 4px 4px rgba(0,0,0,0.08);
     margin-bottom: 18px;
 }
 
+.floor{
+    background-color: white;
+    padding-top: 30px;
+}
+
+.weeks{
+    padding: 20px;
+    border-radius: 10px;
+}
+
 @media (max-width: 1072px) {
     .card {
         float: none;

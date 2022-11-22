@@ -101,7 +101,7 @@ export function Week() {
 
   return (
     <div className="weeks">
-      <center>
+      <center className='floor'>
         <div className="select-dropdown">
           <select onChange={() => floorSelected(event)}>
             <option value="10th floor">10th floor</option>

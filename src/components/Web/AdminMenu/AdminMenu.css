@@ -1,17 +1,78 @@
-.adminButton{
-    background-color: white;
-    text-align:left;
-    padding-top: 20px;
-    padding-left: 25px;
-    
+.col.hyper-nav {
+  flex: 0 0 300px !important;
+  background-color: #30183f;
+  min-height: calc(100vh);
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  transition: flex 0.4s;
+  position: relative;
+}
+.nav-link-padding {
+  height: 20px;
 }
 
-.button{
-    margin: 0 auto;
-    border-radius: 17px  !important;
-    background-color: var(--purple) !important;
-    color: black;
-    cursor: pointer;
-    box-shadow: 0 12px 28px rgb(48 55 61 / 10%);
-    padding: 10px;
+.hyper-nav__logo {
+  background-image: url(https://cdn-static.talent.com/img/svgs/talent_logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  padding: 32px 24px 0;
+  margin: 20px 0 0 16px;
+  display: inline-block;
 }
+
+.nav-link {
+    padding: 10px 10px 10px 14px;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-link .bar {
+    display: none;
+}
+
+.nav-link span {
+    padding-left: 10px;
+    color: rgba(255, 255, 255, .9);
+}
+
+.hyper-nav__collapse-btn {
+    margin-right: 16px;
+    cursor: pointer;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.hyper-nav__logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.admin__logout{
+    position:fixed;
+    bottom: 30px;
+    margin-left: 100px;
+
+}
+
+.admin__logout button{
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 50px;
+    font-size: 14px;
+    height: 48px;
+    padding: 0px 18px;
+    text-align: center;
+    user-select: none;
+}
+
