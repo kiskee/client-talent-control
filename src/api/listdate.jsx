@@ -4,20 +4,15 @@ import { ENV } from "../utils";
 export class ListDate {
     baseApi = ENV.BASE_API;
 
-    async getListuserForDate(date, floor, shedule, type) {
+    async getListuserForDate(day, floor, shedule, type) {
 
-        let data = {
-            date: date,
-            type: type,
-            shedule: shedule,
-            floor: floor
-        }
+      
 
 
 
         let info = {
             "date": "11/21/2022",
-            "type":"work"
+            "type": "work"
         }
 
         try {
@@ -28,8 +23,9 @@ export class ListDate {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    "date": "11/21/2022",
-                    "type":"work"
+                    date: day,
+                    type: type,
+                    floor:floor.match(/\d+/).pop()
                 })
             };
 
@@ -46,15 +42,15 @@ export class ListDate {
     }
 
 
-    async createDay (date){
+    async createDay(date) {
 
         let data = {
-            "date":date,
+            "date": date,
             "userList": []
         }
 
         try {
-            
+
             const url = `${this.baseApi}/${ENV.API_ROUTES.DAY}/create`;
             const params = {
                 method: "POST",
