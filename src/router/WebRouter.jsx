@@ -1,11 +1,21 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import { WeekDays, Login } from '../pages/web'
+import { WeekDays, Login, Dashboard } from '../pages/web'
 import { ClientLayout } from "../layouts";
 import { useAuth } from "../hooks";
 
 export function WebRouter  (){
   const { user } = useAuth();
+/*
+  const {
+    user: { role },
+  } = useAuth();
+  const isAdmin = role === "admin";
+
+  {isAdmin &&(
+    <Route path="/dashboard" element={<Dashboard />} />
+  )}
+  */
   
   const loadLayout = (Layout, Page) => {
     return (
@@ -28,9 +38,11 @@ export function WebRouter  (){
               element={loadLayout(ClientLayout, WeekDays)}
             />
           ))}
+          <Route path="/dashboard" element={loadLayout(ClientLayout, Dashboard)} />
           
         </>
       )}
+    
     </Routes>
   )
 }

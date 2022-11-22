@@ -1,5 +1,5 @@
 
-const SERVER_IP = "api-talent.up.railway.app";
+const SERVER_IP = "control-api.up.railway.app";
 
 export const ENV = {
   BASE_PATH: `https://${SERVER_IP}`,

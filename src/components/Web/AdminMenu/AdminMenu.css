@@ -1,0 +1,17 @@
+.adminButton{
+    background-color: white;
+    text-align:left;
+    padding-top: 20px;
+    padding-left: 25px;
+    
+}
+
+.button{
+    margin: 0 auto;
+    border-radius: 17px  !important;
+    background-color: var(--purple) !important;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgb(48 55 61 / 10%);
+    padding: 10px;
+}
