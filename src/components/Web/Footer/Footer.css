@@ -1,0 +1,24 @@
+
+.footerInfo {
+  
+    align-items: center;
+    justify-content: left;
+    color: #888;
+    padding-bottom: 10px;
+    position:fixed;
+    min-height: 100%;
+
+}
+
+.mainFooter {
+    text-decoration: none
+}
+
+a.mainFooter:hover {
+    color: #691F74;
+}
+
+.linkis{
+    text-align: center;
+    margin-top:20px;
+}

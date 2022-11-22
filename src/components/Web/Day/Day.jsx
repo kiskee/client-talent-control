@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { ListDate } from "../../../api";
 
@@ -37,6 +38,23 @@ apidays.getListuserForDate(day,"10",'Fulltime',"work")
           <h4>
             <b>{day}</b>
           </h4>
+=======
+import React from "react";
+
+export function Day({ day, number }) {
+  let Img = `../../../../Day_${number + 1}.png`;
+
+  return (
+    <>
+    <center>
+
+      <div className="card">
+        <center>
+          <h5 className="dateText">
+            <b>{day}</b>
+          </h5>
+          <div className="lineBreak"></div>
+>>>>>>> e044aa6894972df8fb921da27c4aa7165bea12f9
         </center>
         <img src={Img} className="img" />
         <div className="container">
@@ -44,14 +62,23 @@ apidays.getListuserForDate(day,"10",'Fulltime',"work")
             <div className="oval">
               <center>Morning 0/54</center>
             </div>
+<<<<<<< HEAD
             <br />
+=======
+>>>>>>> e044aa6894972df8fb921da27c4aa7165bea12f9
             <div className="oval">
               <center>Afternoon 0/54</center>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       </center>
+=======
+
+      </center>
+
+>>>>>>> e044aa6894972df8fb921da27c4aa7165bea12f9
     </>
   );
 }
