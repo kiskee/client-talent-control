@@ -2,26 +2,16 @@
 import React, { useState } from "react";
 import { Day } from "./../Day";
 import { Cookie, ListDate } from "../../../api";
-import { calculateDays, mostrar } from "./WeekForm.form";
+import { calculateDays} from "./WeekForm.form";
 import { ENV } from "../../../utils";
 
 /* ----------------------------- CLASS INSTANCES ---------------------------- */
 const validationCookies = new Cookie();
 const apidays = new ListDate();
 /* -------------------------------- VARIBLES -------------------------------- */
-
-
-
-console.log(apidays.getListuserForDate())
-
-
-
-
-
-
-
 let day = [];
 
+/* ------------------------------- VALIDATIONS ------------------------------ */
 if (!localStorage.getItem(ENV.JWT.DAYS)) {
   // You do not have the localStorage
   validationCookies.getCookieApi().then((response) => {
@@ -109,7 +99,7 @@ export function Week() {
           </select>
         </div>
       </center>
-      <div className="container days" onClick={() => mostrar()}>
+      <div className="container days">
         {day.map((element, index) => (
           <div key={element}>
             <Day day={element} number={index} floor={floor} />
