@@ -44,7 +44,7 @@ console.log(floor)
 
 console.log(floor.match(/\d+/).pop());
 
-    apidays.getListuserForDate(day, floor, "Part-Time moring", "work").then((response)=>{
+    apidays.getListuserForDate(day, floor, "morning", "work").then((response)=>{
       console.log('=============')
       console.log(response)
       setListmornign(response)

@@ -25,7 +25,8 @@ export class ListDate {
                 body: JSON.stringify({
                     date: day,
                     type: type,
-                    floor:floor.match(/\d+/).pop()
+                    floor:floor.match(/\d+/).pop(),
+                    shedule:shedule
                 })
             };
 
