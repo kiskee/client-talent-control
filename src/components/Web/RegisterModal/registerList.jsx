@@ -1,10 +1,22 @@
 import React from 'react'
 
-export function RegisterList () {
+export function RegisterList({ setStyleDisplay }) {
 
-  console.log('DIAMANTICOOO')
+  const showhide = () => {
+    setStyleDisplay('none')
+  }
+
+
+  console.log('DIMAOND')
+  
+
+
   return (
-    
-    <h1>DiamondStalker</h1>
+<div className='container-modal'>
+      <div className="modal-content">
+        <span className="close" onClick={()=>{showhide()}}>&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+    </div>
   )
 }

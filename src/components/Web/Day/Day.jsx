@@ -16,6 +16,7 @@ export function Day({ day, number, floor }) {
   const [listmornign, setListmornign] = useState([]);
   const [lsitafternoon, setLsitafternoon] = useState([]);
   const [fulltime, setFulltime] = useState([])
+  const [styleDisplay, setStyleDisplay] = useState('none')
 
   useEffect(() => {
 
@@ -54,16 +55,15 @@ export function Day({ day, number, floor }) {
 
 
 
-  const mostrar = () => {
-   console.log('HOLA')
-    return (<RegisterList/>)
+  const showhide = () => {
+    setStyleDisplay('block')
   }
 
 
   return (
     <>
       <center>
-        <div className="card"  onClick={() => mostrar()}>
+        <div className="card" onClick={() => showhide()}>
           <center>
             <h5 className="dateText">
               <b>{day}</b>
@@ -76,12 +76,15 @@ export function Day({ day, number, floor }) {
               <div className="oval">
                 <center>Morning {listmornign.length}/54</center>
               </div>
-
               <div className="oval">
                 <center>Afternoon {lsitafternoon.length}/54</center>
               </div>
             </div>
           </div>
+        </div>
+
+        <div>
+        <div style={{ display: styleDisplay }}> <RegisterList setStyleDisplay={setStyleDisplay}/></div>
         </div>
       </center>
     </>
