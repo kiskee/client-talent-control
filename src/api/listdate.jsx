@@ -5,17 +5,8 @@ export class ListDate {
     baseApi = ENV.BASE_API;
 
     async getListuserForDate(day, floor, shedule, type) {
-
-      
-
-
-
-        let info = {
-            "date": "11/21/2022",
-            "type": "work"
-        }
-
         try {
+            let tempFloor = floor.match(/\d+/).length > 0 ? floor.match(/\d+/).pop() : "10"
             const url = `${this.baseApi}/${ENV.API_ROUTES.DAY}/dayuserlist`;
             const params = {
                 method: "POST",
@@ -25,7 +16,7 @@ export class ListDate {
                 body: JSON.stringify({
                     date: day,
                     type: type,
-                    floor:floor.match(/\d+/).pop(),
+                    floor:tempFloor,
                     shedule:shedule
                 })
             };
@@ -34,8 +25,6 @@ export class ListDate {
             const result = await response.json();
 
             if (response.status !== 200) throw result;
-            console.log('RES')
-            console.log(result);
             return result;
         } catch (error) {
             throw error;

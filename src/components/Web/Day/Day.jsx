@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ListDate } from "../../../api";
 
 export function Day({ day, number, floor }) {
@@ -6,52 +6,40 @@ export function Day({ day, number, floor }) {
 
   const apidays = new ListDate();
 
-  const [listFulltime, setListFulltime] = useState([]);
   const [listmornign, setListmornign] = useState([]);
   const [lsitafternoon, setLsitafternoon] = useState([]);
-
-  // apidays.getListuserForDate(day, floor, "Part-Time moring", "work").then((response)=>{
-  //   setListFulltime(response)
-  // });
-
-
-  // apidays.getListuserForDate(day, floor, "Fulltime", "work").then((response)=>{
-  //   setListmornign(response)
-  // });
-
-  // apidays.getListuserForDate(day, floor, "Fulltime", "work").then((response)=>{
-  //   setLsitafternoon(response)
-  // });
-
-  
-
-
-  //setListFulltime(apidays.getListuserForDate(day,"10",'Fulltime',"work"));
-  // setListFulltime(apidays.setListmornign(day,floor,'Part-Time morning',"work"))
-  // setListFulltime(apidays.setLsitafternoon(day,floor,'Part-Time afternoon',"work"))
-
-
-
-
-  // console.log(listmornign)
-
-  // console.log(listmornign)
-
+  const [fulltime, setFulltime] = useState([])
 
   useEffect(() => {
-
-console.log(floor)
-
-console.log(floor.match(/\d+/).pop());
-
-    apidays.getListuserForDate(day, floor, "morning", "work").then((response)=>{
-      console.log('=============')
-      console.log(response)
+    apidays.getListuserForDate(day, floor, "morning", "work").then((response) => {
       setListmornign(response)
     });
-  },[floor]);
+
+    apidays.getListuserForDate(day, floor, "afternoon", "work").then((response) => {
+      setLsitafternoon(response)
+    });
+
+    apidays.getListuserForDate(day, floor, "fulltime", "work").then((response) => {
+      if (response.length > 0) {
+        setFulltime(response);
+      }
+    });
+  }, [floor]);
+
+  useEffect(() => {
+    let tempmorning = [...listmornign]
+    tempmorning.push(fulltime)
+    tempmorning= tempmorning.flat()
+    setListmornign(tempmorning)
 
 
+    let tempafter = [...lsitafternoon]
+    tempafter.push(fulltime)
+    tempafter= tempafter.flat()
+    setLsitafternoon(tempafter)
+
+
+  },[fulltime,floor]);
 
   return (
     <>
