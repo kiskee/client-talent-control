@@ -95,6 +95,11 @@ export class ListDate {
         }
     }
 
+    /**
+     * 
+     * @param {String} date Date we wish to search
+     * @returns object with all the information of the specified day
+     */
     async getDay(date) {
 
         let data = {
