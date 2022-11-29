@@ -81,7 +81,6 @@ function loadday() {
       day.push(new Date(temp).toLocaleDateString());
     });
 }
-
 export function Week() {
   const [floor, setfloor] = useState("10");
 

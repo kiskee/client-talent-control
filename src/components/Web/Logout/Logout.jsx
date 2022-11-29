@@ -3,7 +3,7 @@ import { Button, Icon } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 import { Auth, User } from "../../../api";
-import './Logout.css'
+import "./Logout.css";
 
 const authController = new Auth();
 const userController = new User();
@@ -28,7 +28,7 @@ export function Logout() {
       }
     };
 
-    userName()
+    userName();
   }, []);
 
   const onLogout = () => {
@@ -38,9 +38,9 @@ export function Logout() {
 
   return (
     <>
-     <div className="mainMenuHolder">
-        <svg className="mainMenuLogo"
-
+      <div className="mainMenuHolder">
+        <svg
+          className="mainMenuLogo"
           viewBox="0 0 107 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -91,29 +91,40 @@ export function Logout() {
           ></path>
         </svg>
         <div className="hyper-top-bar">
-    <div className="hyper-top-bar__options">
-        <div className="menu__item menu__dropdownWrap">
-            <a className="menu__dropdownTitle" rel="nofollow" href="#">
-            <span className="emailName">{user.email}</span>
+          <div className="hyper-top-bar__options">
+            <div className="menu__item menu__dropdownWrap">
+              <a className="menu__dropdownTitle" rel="nofollow" href="#">
+                <span className="emailName">{user.email}</span>
                 <span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path opacity="0.4" d="M9 1L5 5L1 1" stroke="#30183F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    </path></svg>
+                  <svg
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M9 1L5 5L1 1"
+                      stroke="#30183F"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
                 </span>
-            </a>
-            <div className="menu__dropdownHolder">
+              </a>
+              <div className="menu__dropdownHolder">
                 <ul className="menu__dropdown">
-                    
-                    <li className="menu__listElement">
-                        <a onClick={onLogout}>Log Out</a>
-                    </li>
+                  <li className="menu__listElement">
+                    <a onClick={onLogout}>Log Out</a>
+                  </li>
                 </ul>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
       </div>
-    
-</>
+    </>
   );
 }

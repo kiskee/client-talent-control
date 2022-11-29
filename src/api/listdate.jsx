@@ -1,4 +1,5 @@
 import { json } from "react-router-dom";
+import { date } from "yup/lib/locale";
 import { ENV } from "../utils";
 
 export class ListDate {
@@ -16,8 +17,8 @@ export class ListDate {
                 body: JSON.stringify({
                     date: day,
                     type: type,
-                    floor:tempFloor,
-                    shedule:shedule
+                    floor: tempFloor,
+                    shedule: shedule
                 })
             };
 
@@ -62,4 +63,65 @@ export class ListDate {
         }
 
     }
+
+    /**
+     * 
+     * @param {String} day Field we send to know which day we are going to update.
+     * @param {Array} userList Array with updated user list
+     */
+    async update(day, userList) {
+        let data = {
+            "date": day,
+            "userList": userList
+        }
+
+        try {
+            const url = `${this.baseApi}/${ENV.API_ROUTES.DAY}/update`
+            const params = {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+
+            const response = await fetch(url, params);
+            const result = await response.json();
+
+            if (response.status !== 200) throw result;
+            console.log(result);
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getDay(date) {
+
+        let data = {
+            "date": date
+        }
+
+        try {
+
+            const url = `${this.baseApi}/${ENV.API_ROUTES.DAY}/getday`;
+            const params = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            };
+
+            const response = await fetch(url, params);
+            const result = await response.json();
+
+            if (response.status !== 200) throw result;
+            return result;
+
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
 }

@@ -84,7 +84,22 @@ export function Day({ day, number, floor }) {
         </div>
 
         <div>
-        <div style={{ display: styleDisplay }}> <RegisterList setStyleDisplay={setStyleDisplay}/></div>
+          <div style={{ display: styleDisplay }}>
+            <RegisterList
+              setStyleDisplay={setStyleDisplay}
+
+              listmornign={listmornign}
+              setListmornign={setListmornign}
+
+              lsitafternoon={lsitafternoon}
+              setLsitafternoon={setLsitafternoon}
+
+              fulltime={fulltime}
+              setFulltime={setFulltime}
+
+              day = {day}
+              floor = {floor}
+            /></div>
         </div>
       </center>
     </>
