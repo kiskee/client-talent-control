@@ -2,6 +2,7 @@ import { set } from "lodash";
 import React, { useState, useEffect } from "react";
 import { date } from "yup";
 import { Auth, User, ListDate } from "../../../api";
+import "./registerList.css";
 
 const authController = new Auth();
 const userController = new User();
@@ -95,17 +96,17 @@ export function RegisterList({
         break;
     }
 
-    apidays.getDay(day).then(((response) => {
-      let tempUserList = response.userList
+    apidays.getDay(day).then((response) => {
+      let tempUserList = response.userList;
       tempUserList.push({
         email: user.email,
         type: type,
         shedule: shedule,
         confirmation: "false",
-        floor: floor
-      })
+        floor: floor,
+      });
       apidays.update(day, tempUserList);
-    }))
+    });
   };
 
   //   useEffect(() => {
@@ -138,40 +139,56 @@ export function RegisterList({
         >
           &times;
         </span>
+        <div class="modal__title">Register your asistance</div>
+        <div className="lineBreak"></div>
+
         <div className="Form">
+          <div className="modal__shedule">
           <label>Shedule: </label>
-          <select
-            className="shedule"
-            onClick={() => {
-              selected(event);
-            }}
-          >
-            <option value="fulltime">Full Time</option>
-            <option value="morning">Part Time Morning</option>
-            <option value="afternoon">Part Time Afternoon</option>
-          </select>
-          <br />
+          <div className="select-dropdown">
+            <select
+              className="shedule"
+              onClick={() => {
+                selected(event);
+              }}
+            >
+              <option value="fulltime">Full Time</option>
+              <option value="morning">Part Time Morning</option>
+              <option value="afternoon">Part Time Afternoon</option>
+            </select>
+          </div>
+          </div>
+          <div className="lineBreak"></div>
+
+          <div className="modal__shedule">
           <label>Type: </label>
-          <select
-            className="type"
-            onClick={() => {
-              selected(event);
-            }}
-          >
-            <option value="work">Work</option>
-            <option value="visit">Visit</option>
-            <option value="event">Event</option>
-            <option value="other">Other</option>
-          </select>
-          <br />
+          <div className="select-dropdown">
+            <select
+              className="type"
+              onClick={() => {
+                selected(event);
+              }}
+            >
+              <option value="work">Work</option>
+              <option value="visit">Visit</option>
+              <option value="event">Event</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+              </div>
+          <div className="lineBreak"></div>
+
+          <div className="modal__buttons">
           <button
+            className="registerButton"
             onClick={() => {
               registerButton();
             }}
           >
             Register
           </button>
-          <button>Show List</button>
+          <button className="registerButton">Show List</button>
+          </div>
         </div>
       </div>
     </div>
