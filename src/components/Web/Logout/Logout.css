@@ -5,6 +5,7 @@
   align-items: center;
   padding: 0px 48px;
   flex-wrap: wrap;
+  padding-bottom: 10px;
 }
 
 .hyper-top-bar__options {

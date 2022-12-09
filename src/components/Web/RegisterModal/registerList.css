@@ -4,6 +4,10 @@
     height: 100%; 
     background-color: rgba(48, 24, 63, 0.6);
     position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    padding-top: 200px;
   }
   /* Modal Content/Box */
   .modal-content {
