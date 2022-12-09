@@ -18,6 +18,9 @@ let day = [];
  * we proceed to create it without importing the rest of the information.
  */
 if (!localStorage.getItem(ENV.JWT.DAYS)) {
+
+  console.log('El sistema no tiene almacenamiento local ⟢ ⊱⊱ ⟢ Se crea este')
+
   validationCookies.getCookieApi().then((response) => {
     localStorage.setItem(
       ENV.JWT.DAYS,
@@ -31,14 +34,20 @@ else {
    * We validate that the day is Friday and after noon.
    * In case of compliance, we calculate the new days and insert them in the db.
    */
-  if (new Date().getDay() >= 5 && new Date().getHours() >= 12) {
+  if (new Date().getDay() >= 5 && new Date().getHours() >= 10) {
     let days;
-
+    console.log('Es viernes y son mas de las 12')
     validationCookies.getCookieApi().then((response) => {
       /**
        * We validate if the date in the db is expired.
        */
-      if (response.date < new Date().toJSON()) {
+
+      console.log(new Date(response.date).getHours())
+      console.log(new Date().getHours())
+      if (new Date(response.date).getDate() < new Date().getDate() && new Date(response.date).getHours() < new Date().getHours()) {
+
+        console.log('La ultima fecha de la db ya esta vencida')
+
         var dateCalculated = new Date();
 
         dateCalculated.setDate(dateCalculated.getDate() + 7);
@@ -47,12 +56,13 @@ else {
         days = calculateDays(dateCalculated);
 
         validationCookies.updateCookieApi({
-          date: dateCalculated.toJSON(),
+          date: dateCalculated,
           cookie: days.join(","),
         });
 
         days.forEach((temp) => {
-          apidays.createDay(temp);
+          console.log(temp.toLocaleDateString())
+          apidays.createDay(temp.toLocaleDateString());
         });
       }
       /**
@@ -73,7 +83,11 @@ function loadday() {
   JSON.parse(localStorage.getItem(ENV.JWT.DAYS))
     .days.split(",")
     .forEach((temp) => {
-      day.push(new Date(temp).toLocaleDateString());
+      day.push(new Date(temp).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }));
     });
 }
 export function Week() {
