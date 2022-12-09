@@ -40,6 +40,7 @@ else {
     validationCookies.getCookieApi().then((response) => {
       /**
        * We validate if the date in the db is expired.
+       * validate
        */
 
       console.log(new Date(response.date).getHours())
