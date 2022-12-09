@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Day } from "./../Day";
 import { Cookie, ListDate } from "../../../api";
-import { calculateDays} from "./WeekForm.form";
+import { calculateDays } from "./WeekForm.form";
 import { ENV } from "../../../utils";
 
 /* ----------------------------- CLASS INSTANCES ---------------------------- */
@@ -12,63 +12,58 @@ const apidays = new ListDate();
 let day = [];
 
 /* ------------------------------- VALIDATIONS ------------------------------ */
+
+/**
+ * If the local storage does not exist,
+ * we proceed to create it without importing the rest of the information.
+ */
 if (!localStorage.getItem(ENV.JWT.DAYS)) {
-  // You do not have the localStorage
   validationCookies.getCookieApi().then((response) => {
-    let days;
-
-    console.log(response);
-
-    if (
-      new Date().toLocaleDateString() >
-      new Date(response.date).toLocaleDateString()
-    ) {
-      //We must update the API information
-
-      var dateCalculated = new Date();
-
-      dateCalculated.setDate(dateCalculated.getDate() + 7);
-      dateCalculated.setHours(12, 30, 0);
-
-      days = calculateDays(dateCalculated);
-
-      days.forEach((temp) => {
-        apidays.createDay(temp);
-      });
-
-      validationCookies.updateCookieApi({
-        date: dateCalculated,
-        cookie: days.join(","),
-      });
-    } else {
-      localStorage.setItem(
-        ENV.JWT.DAYS,
-        '{"expired":"' + response.date + '", "days":"' + response.cookie + '"}'
-      );
-    }
+    localStorage.setItem(
+      ENV.JWT.DAYS,
+      '{"expired":"' + response.date + '", "days":"' + response.cookie + '"}'
+    );
   });
   setTimeout(loadday, "1500");
-  
-} else {//Local storage
+}
+else {
+  /**
+   * We validate that the day is Friday and after noon.
+   * In case of compliance, we calculate the new days and insert them in the db.
+   */
+  if (new Date().getDay() >= 5 && new Date().getHours() >= 12) {
+    let days;
 
-  let exp = JSON.parse(localStorage.getItem(ENV.JWT.DAYS)).expired
-  let days;
-  if (new Date(exp).toGMTString() < new Date()) {// The current faith is higher than the date
+    validationCookies.getCookieApi().then((response) => {
+      /**
+       * We validate if the date in the db is expired.
+       */
+      if (response.date < new Date().toJSON()) {
+        var dateCalculated = new Date();
 
-    var dateCalculated = new Date();
+        dateCalculated.setDate(dateCalculated.getDate() + 7);
+        dateCalculated.setHours(12, 30, 0);
 
-    dateCalculated.setDate(dateCalculated.getDate() + 7);
-    dateCalculated.setHours(12, 30, 0);
+        days = calculateDays(dateCalculated);
 
-    days = calculateDays(dateCalculated);
+        validationCookies.updateCookieApi({
+          date: dateCalculated.toJSON(),
+          cookie: days.join(","),
+        });
 
-    days.forEach((temp) => {
-      apidays.createDay(temp);
-    });
-
-    validationCookies.updateCookieApi({
-      date: dateCalculated,
-      cookie: days.join(","),
+        days.forEach((temp) => {
+          apidays.createDay(temp);
+        });
+      }
+      /**
+       * The date in the DB is already updated, therefore we update the local almanac.
+       */
+      else {
+        localStorage.setItem(
+          ENV.JWT.DAYS,
+          '{"expired":"' + response.date + '", "days":"' + response.cookie + '"}'
+        );
+      }
     });
   }
   loadday()
@@ -90,7 +85,7 @@ export function Week() {
 
   return (
     <div className="weeks">
-      <center className='floor'>
+      <center className="floor">
         <div className="select-dropdown">
           <select onChange={() => floorSelected(event)}>
             <option value="10th floor">10th floor</option>
@@ -99,7 +94,6 @@ export function Week() {
         </div>
       </center>
 
-      
       <div className="container days">
         {day.map((element, index) => (
           <div key={element}>
