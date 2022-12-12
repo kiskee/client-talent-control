@@ -10,6 +10,7 @@
     "controller": "node controller.js"
   },
   "dependencies": {
+    "@sweetalert2/themes": "^5.0.15",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
