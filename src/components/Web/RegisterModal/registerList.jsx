@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { date } from "yup";
 import { Auth, User, ListDate } from "../../../api";
 import "./registerList.css";
-import Swal from 'sweetalert2/src/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2'
+
 
 const authController = new Auth();
 const userController = new User();
