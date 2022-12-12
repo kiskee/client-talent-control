@@ -1,9 +1,13 @@
 import React from "react";
-import Swal from 'sweetalert2'
+
 import { useFormik } from "formik";
 import { Auth } from "../../../../api";
 import { useAuth } from "../../../../hooks";
 import { inititalValues, validationSchema } from "./LoginForm.form";
+
+import Swal from 'sweetalert2/src/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+
 const authController = new Auth();
 export function LoginForm() {
   const { login } = useAuth();
@@ -19,8 +23,10 @@ export function LoginForm() {
         login(response.access);
       } catch (error) {
         Swal.fire({
+          title: 'Error!',
+          text: 'Do you want to continue',
           icon: 'error',
-          title: 'Incorrect password'  
+          confirmButtonText: 'Cool'
         })
       }
     },
