@@ -1,16 +1,12 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+import Swal from 'sweetalert2'
 import { useFormik } from "formik";
 import { Auth } from "../../../../api";
 import { useAuth } from "../../../../hooks";
 import { inititalValues, validationSchema } from "./LoginForm.form";
-
-
 const authController = new Auth();
-
 export function LoginForm() {
   const { login } = useAuth();
-
   const formik = useFormik({
     initialValues: inititalValues(),
     validationSchema: validationSchema(),
@@ -20,44 +16,19 @@ export function LoginForm() {
         const response = await authController.login(formValue);
         authController.setAccessToken(response.access);
         authController.setRefreshToken(response.refresh);
-
         login(response.access);
       } catch (error) {
-        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Incorrect password'  
+        })
       }
     },
   });
-
-
-  /*
-  <Form onSubmit={formik.handleSubmit}>
-        <Form.Input
-          name="email"
-          placeholder="Correo electronico"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          error={formik.errors.email}
-        />
-        <Form.Input
-          name="password"
-          type="password"
-          placeholder="Contraseña"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-          error={formik.errors.password}
-        />
-  
-        <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
-          Entrar
-        </Form.Button>
-      </Form>
-  */
-
   return (
     <>
       <div className="mainMenuHolder">
         <svg className="mainMenuLogo"
-
           viewBox="0 0 107 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -110,9 +81,7 @@ export function LoginForm() {
       </div>
       <div className="mainWrap"
       >
-
         <div className="sasTitle">SAS Login</div>
-
         <div className="sasInputHolder" >
           <div className="sasInputLabel">Email</div>
           <div className="sasInputText">
@@ -123,11 +92,9 @@ export function LoginForm() {
             <input
               className="sasInput"
               name="email"
-
               onChange={formik.handleChange}
               value={formik.values.email}
               error={formik.errors.email}
-
             ></input>
           </div>
         </div>
@@ -142,19 +109,15 @@ export function LoginForm() {
               className="sasInput"
               name="password"
               type="password"
-
               onChange={formik.handleChange}
               value={formik.values.password}
               error={formik.errors.password}
-
             ></input>
           </div>
         </div>
-
         <button type="submit" className="sasMainAction" onClick={formik.handleSubmit}>
           Login
         </button>
-
         <div className="sas-help">
           You can create a SAS account if you don't have one already. You can reset your password if your account is locked.
           <div className="linkis">
@@ -165,7 +128,6 @@ export function LoginForm() {
           </div>
         </div>
       </div>
-
       <footer>
         <div className="footerInfo">
           <a className="mainFooter" rel="nofollow" href="/get-started">Help</a>
@@ -178,9 +140,5 @@ export function LoginForm() {
         </div>
       </footer>
     </>
-
-
-
-
   );
 }
