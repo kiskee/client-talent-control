@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { date } from "yup";
 import { Auth, User, ListDate } from "../../../api";
 import "./registerList.css";
+import Swal from 'sweetalert2/src/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 const authController = new Auth();
 const userController = new User();
@@ -66,6 +68,11 @@ export function RegisterList({
           floor: floor,
         });
         setFulltime(templist);
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso!'  
+        })
+        showhide();
         break;
 
       case "morning":
@@ -78,6 +85,11 @@ export function RegisterList({
           floor: floor,
         });
         setListmornign(templistmornign);
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso!'  
+        })
+        showhide();
         break;
 
       case "afternoon":
@@ -90,6 +102,11 @@ export function RegisterList({
           floor: floor,
         });
         setLsitafternoon(tempafternoon);
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso!'  
+        })
+        showhide();
         break;
 
       default:
