@@ -40,9 +40,8 @@ export function LoginForm() {
       } catch (error) {
         Swal.fire({
           title: 'Error!',
-          text: 'Do you want to continue',
-          icon: 'error',
-          confirmButtonText: 'Cool'
+          text: 'Email or Password incorrect',
+          icon: 'error',        
         })
       }
     },
