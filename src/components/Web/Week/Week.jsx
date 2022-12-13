@@ -36,15 +36,15 @@ else {
    */
   if (new Date().getDay() >= 5 && new Date().getHours() >= 10) {
     let days;
-    console.log('Es viernes y son mas de las 12')
+    // console.log('Es viernes y son mas de las 12')
     validationCookies.getCookieApi().then((response) => {
       /**
        * We validate if the date in the db is expired.
        * validate
        */
 
-      console.log(new Date(response.date).getHours())
-      console.log(new Date().getHours())
+      // console.log(new Date(response.date).getHours())
+      // console.log(new Date().getHours())
       if (new Date(response.date).getDate() < new Date().getDate() && new Date(response.date).getHours() < new Date().getHours()) {
 
         console.log('La ultima fecha de la db ya esta vencida')

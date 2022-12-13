@@ -1,4 +1,4 @@
-
+/* Diseno de opacar el fondo*/
   .container-modal{
     width: 100%; /* Full width */
     height: 100%; 
@@ -10,16 +10,22 @@
     padding-top: 200px;
   }
   /* Modal Content/Box */
+
   .modal-content {
     background-color: #fefefe;
-    margin: 30px auto; /* 15% from the top and centered */
+    margin: auto auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 450px; /* Could be more or less, depending on screen size */
-    height: 500px;
     border-radius: 12px;
-  }
-  
+  } 
+
+
+  .modal-content {
+    background-color: #fefefe;
+    transform: translate(0%, -15%);
+  } 
+
   /* The Close Button */
   .close {
     color: #aaa;
@@ -67,7 +73,7 @@
   }
 
   .modal__shedule{
-    padding-top: 15px;
+    padding-top: 1px;
     padding-bottom: 15px;
   }
 

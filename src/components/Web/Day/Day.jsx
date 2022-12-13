@@ -64,6 +64,9 @@ export function Day({ day, number, floor }) {
     <>
       <center>
         <div className="card" onClick={() => showhide()}>
+          <div style={{marginTop:"-45px"}}>
+            <img src='../../../../crown.png' alt="Register" width={"50px"}/>
+          </div>
           <center>
             <h5 className="dateText">
               <b>{day}</b>
