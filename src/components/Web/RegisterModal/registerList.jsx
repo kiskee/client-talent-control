@@ -156,7 +156,7 @@ export function RegisterList({
         >
           &times;
         </span>
-        <div class="modal__title">Register your asistance</div>
+        <div className="modal__title">Register your asistance</div>
         <div className="lineBreak"></div>
 
         <div className="Form">
