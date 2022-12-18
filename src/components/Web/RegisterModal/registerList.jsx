@@ -20,6 +20,7 @@ export function RegisterList({
   listmornign,
   day,
   floor,
+  crow
 }) {
   const [shedule, setShedule] = useState("fulltime");
   const [type, setType] = useState("work");
@@ -126,25 +127,6 @@ export function RegisterList({
     });
   };
 
-  //   useEffect(() => {
-  //     //setTimeout(() => {
-
-  // console.log(fulltime)
-  // console.log(lsitafternoon)
-  // console.log(listmornign)
-
-  //       let tempUserList = [...lsitafternoon];
-  //       tempUserList.push(listmornign);
-  //       tempUserList = tempUserList.flat()
-  //       setupdateList(tempUserList);
-
-  //       if (tempUserList.length != 0) {
-  //         console.log(updateList);
-  //         apidays.update(day, tempUserList);
-  //       }
-  //     //}, 500);
-  //   }, [fulltime,listmornign,lsitafternoon]);
-
   return (
     <div className="container-modal">
       <div className="modal-content">
@@ -196,7 +178,7 @@ export function RegisterList({
           <div className="lineBreak"></div>
 
           <div className="modal__buttons">
-          <button
+          <button style={{display:(()=>{return crow == "block" ? "none" : "block"})()}}
             className="registerButton"
             onClick={() => {
               registerButton();

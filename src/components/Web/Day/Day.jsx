@@ -50,11 +50,11 @@ export function Day({ day, number, floor }) {
         const response = await userController.getMe(accessToken);
         delete response.password;
 
-        const data = await userController.getDayUser({"email": response.email, "date": day ,"floor":floor.match(/\d+/).length > 0 ? floor.match(/\d+/).pop() : "10"})
+        const data = await userController.getDayUser({ "email": response.email, "date": day, "floor": floor.match(/\d+/).length > 0 ? floor.match(/\d+/).pop() : "10" })
         if (data.length != 0) setCrow("block")
         else setCrow("none")
 
-    
+
       } catch (error) {
         console.error(error);
       }
@@ -120,6 +120,7 @@ export function Day({ day, number, floor }) {
               setFulltime={setFulltime}
               day={day}
               floor={floor}
+              crow={crow}
             />
           </div>
         </div>

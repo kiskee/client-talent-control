@@ -34,7 +34,8 @@ else {
    * We validate that the day is Friday and after noon.
    * In case of compliance, we calculate the new days and insert them in the db.
    */
-  if (new Date().getDay() >= 5 && new Date().getHours() >= 10) {
+
+  if ((new Date().getDay() >= 5 || new Date().getDay() == 0) && new Date().getHours() >= 10) {
     let days;
     // console.log('Es viernes y son mas de las 12')
     validationCookies.getCookieApi().then((response) => {
@@ -46,8 +47,6 @@ else {
       // console.log(new Date(response.date).getHours())
       // console.log(new Date().getHours())
       if (new Date(response.date).getDate() < new Date().getDate() && new Date(response.date).getHours() < new Date().getHours()) {
-
-        console.log('La ultima fecha de la db ya esta vencida')
 
         var dateCalculated = new Date();
 
@@ -65,6 +64,7 @@ else {
           console.log(temp.toLocaleDateString())
           apidays.createDay(temp.toLocaleDateString());
         });
+        reload()
       }
       /**
        * The date in the DB is already updated, therefore we update the local almanac.
