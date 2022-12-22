@@ -61,7 +61,7 @@ export function Day({ day, number, floor }) {
 
         let tempfloor = floor.match(/\d+/).length > 0 ? floor.match(/\d+/).shift() : "10";
 
-        let info = data.filter(x => x.date == day)?.filter(y => y.floor.search(tempfloor)>-1)
+        let info = data.filter(x => x.date == day)
 
         if (info.length != 0) setCrow("block")
         else setCrow("none")

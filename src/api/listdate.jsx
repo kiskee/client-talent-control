@@ -7,7 +7,10 @@ export class ListDate {
 
     async getListuserForDate(day, floor, shedule, type) {
         try {
-            let tempFloor = floor.match(/\d+/).length > 0 ? floor.match(/\d+/).pop() : "10"
+            let tempFloor
+            if (floor)
+                tempFloor = floor.match(/\d+/).length > 0 ? floor.match(/\d+/).pop() : "10"
+
             const url = `${this.baseApi}/${ENV.API_ROUTES.DAY}/dayuserlist`;
             const params = {
                 method: "POST",
