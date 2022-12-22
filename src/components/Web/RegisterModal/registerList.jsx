@@ -1,4 +1,4 @@
-import { set } from "lodash";
+import { result, set } from "lodash";
 import React, { useState, useEffect } from "react";
 import { date } from "yup";
 import { Auth, User, ListDate } from "../../../api";
@@ -25,7 +25,7 @@ export function RegisterList({
   email,
   settempafternoon,
   settempmornig
-  
+
 }) {
   const [shedule, setShedule] = useState("fulltime");
   const [type, setType] = useState("work");
@@ -51,20 +51,23 @@ export function RegisterList({
   // }, []);
 
   const deleteListuser = () => {
+    /* ----------------------------- ELIMINAR CORONA ---------------------------- */
     let temp = [...dayListUser];
     console.log(temp)
     temp = temp.filter(x => x.date != day)
     userController.updateListUser({ "email": email, "registerDays": temp });
     setCrow("none");
 
-    let temp2 = temp.filter(x => x.date == day)
+    /* ------------------------ ELIMINAR REGISTRO DEL DIA ----------------------- */
+    apidays.getListuserForDate(day).then((result) => { 
+      let listDate = result.filter(x => x.email != email)
+      apidays.update(day,listDate)
+    })
 
-    if(temp2.type == "work"){
-      
-    }
+    setInterval(()=>{location.reload()}, 700);
 
   }
-
+msg
   const showhide = () => {
     setStyleDisplay("none");
   };
