@@ -17,8 +17,11 @@ export function Day({ day, number, floor }) {
   const [listmornign, setListmornign] = useState([]);
   const [lsitafternoon, setLsitafternoon] = useState([]);
   const [fulltime, setFulltime] = useState([]);
+
   const [styleDisplay, setStyleDisplay] = useState("none");
   const [crow, setCrow] = useState("none");
+  const [dayListUser, setdayListUser] = useState([]);
+  const [email, setEmail] = useState("");
 
   const [user, setUser] = useState("");
 
@@ -43,6 +46,7 @@ export function Day({ day, number, floor }) {
         });
     }
 
+    //// USER
     const userName = async () => {
       try {
         let accessToken = authController.getAccessToken();
@@ -51,7 +55,15 @@ export function Day({ day, number, floor }) {
         delete response.password;
 
         const data = await userController.getDayUser({ "email": response.email, "date": day, "floor": floor.match(/\d+/).length > 0 ? floor.match(/\d+/).pop() : "10" })
-        if (data.length != 0) setCrow("block")
+
+        setEmail(response.email);
+        setdayListUser(data);
+
+        let tempfloor = floor.match(/\d+/).length > 0 ? floor.match(/\d+/).shift() : "10";
+
+        let info = data.filter(x => x.date == day)?.filter(y => y.floor.search(tempfloor)>-1)
+
+        if (info.length != 0) setCrow("block")
         else setCrow("none")
 
 
@@ -121,6 +133,11 @@ export function Day({ day, number, floor }) {
               day={day}
               floor={floor}
               crow={crow}
+              dayListUser={dayListUser}
+              email={email}
+              setCrow={setCrow}
+              settempafternoon = {settempafternoon}
+              settempmornig ={settempmornig}
             />
           </div>
         </div>

@@ -58,12 +58,12 @@ export class User {
  * @returns MSG update
  */
   async updateListUser(data) {
-    console.log('=====');
-    console.log(data);
+    // console.log('=====');
+    // console.log(data);
 
     try {
       
-      const url = `${this.baseApi}/${EVN.API_ROUTES.USER}/update`;
+      const url = `${this.baseApi}/${ENV.API_ROUTES.USER}/update`;
 
       const params = {
         method: "POST",

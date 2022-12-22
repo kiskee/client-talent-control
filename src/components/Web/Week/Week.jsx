@@ -35,9 +35,11 @@ else {
    * In case of compliance, we calculate the new days and insert them in the db.
    */
 
+
+
   if ((new Date().getDay() >= 5 || new Date().getDay() == 0) && new Date().getHours() >= 10) {
     let days;
-    // console.log('Es viernes y son mas de las 12')
+    //  console.log('Es viernes y son mas de las 12')
     validationCookies.getCookieApi().then((response) => {
       /**
        * We validate if the date in the db is expired.
@@ -46,6 +48,7 @@ else {
 
       // console.log(new Date(response.date).getHours())
       // console.log(new Date().getHours())
+
       if (new Date(response.date).getDate() < new Date().getDate() && new Date(response.date).getHours() < new Date().getHours()) {
 
         var dateCalculated = new Date();

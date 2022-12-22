@@ -1,5 +1,5 @@
-const SERVER_IP = "control-api.up.railway.app";
-//const SERVER_IP = "server-talent.up.railway.app";
+//const SERVER_IP = "control-api.up.railway.app";
+const SERVER_IP = "server-talent.up.railway.app";
 
 export const ENV = {
   BASE_PATH: `https://${SERVER_IP}`,
@@ -9,7 +9,7 @@ export const ENV = {
     LOGIN: "auth/login",
     COOKIES : "cookie",
     DAY: "day",
-    REFRESH_ACCESS_TOKEN: "auth/refresh_access_token",
+    REFRESH_ACCESS_TOKEN: "auth/re¿fresh_access_token",
     USER_ME: "user/me",
     USER: "user",
     USERS: "users",
