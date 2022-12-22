@@ -67,7 +67,6 @@ export function RegisterList({
     setInterval(()=>{location.reload()}, 700);
 
   }
-msg
   const showhide = () => {
     setStyleDisplay("none");
   };
