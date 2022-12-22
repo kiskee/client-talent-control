@@ -61,8 +61,16 @@ else {
         });
 
         days.forEach((temp) => {
-          console.log(temp.toLocaleDateString())
-          apidays.createDay(temp.toLocaleDateString());
+          console.log(temp.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          }))
+          apidays.createDay(temp.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          }));
         });
         reload()
       }
